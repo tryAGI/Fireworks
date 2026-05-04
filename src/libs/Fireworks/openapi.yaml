@@ -1,0 +1,366 @@
+openapi: 3.0.3
+info:
+  title: Fireworks AI Audio API
+  version: 1.0.0
+  description: >
+    Hand-maintained OpenAPI document for the Fireworks AI pre-recorded audio
+    transcription and translation REST APIs. It is assembled from the public
+    Fireworks AI API reference because Fireworks does not publish a downloadable
+    OpenAPI document for the audio endpoints.
+  termsOfService: https://fireworks.ai/terms-of-service
+  contact:
+    name: Fireworks AI
+    url: https://fireworks.ai/
+servers:
+  - url: https://audio-prod.api.fireworks.ai/v1
+    description: Serverless endpoint for whisper-v3.
+security:
+  - ApiKeyAuth: []
+paths:
+  /audio/transcriptions:
+    post:
+      operationId: createTranscription
+      tags:
+        - Audio
+      summary: Transcribe audio
+      description: >
+        Converts a pre-recorded audio file into text using Fireworks AI ASR
+        models. Use the default base URL for `whisper-v3`; override the client
+        base URI to `https://audio-turbo.api.fireworks.ai/v1` when using
+        `whisper-v3-turbo`.
+      externalDocs:
+        description: Fireworks AI transcribe audio API reference
+        url: https://docs.fireworks.ai/api-reference/audio-transcriptions
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/AudioTranscriptionRequest"
+      responses:
+        "200":
+          description: Transcription completed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AudioResponse"
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Rate limited.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /audio/translations:
+    post:
+      operationId: createTranslation
+      tags:
+        - Audio
+      summary: Translate audio to English
+      description: >
+        Translates a pre-recorded audio file from a supported source language to
+        English. Use the default base URL for `whisper-v3`; override the client
+        base URI to `https://audio-turbo.api.fireworks.ai/v1` when using
+        `whisper-v3-turbo`.
+      externalDocs:
+        description: Fireworks AI translate audio API reference
+        url: https://docs.fireworks.ai/api-reference/audio-translations
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/AudioTranslationRequest"
+      responses:
+        "200":
+          description: Translation completed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AudioResponse"
+        "400":
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Rate limited.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Fireworks API key passed directly in the Authorization header.
+  schemas:
+    AudioTranscriptionRequest:
+      type: object
+      required:
+        - file
+      properties:
+        file:
+          type: string
+          format: binary
+          description: >
+            Audio file to transcribe. Fireworks also accepts a public URL in this
+            form field, but the generated SDK models the documented file upload
+            path as a binary field.
+        model:
+          $ref: "#/components/schemas/AudioModel"
+        vad_model:
+          $ref: "#/components/schemas/VadModel"
+        alignment_model:
+          $ref: "#/components/schemas/AlignmentModel"
+        language:
+          type: string
+          nullable: true
+          description: Target language for transcription.
+        prompt:
+          type: string
+          nullable: true
+          description: Prompt used to guide transcription style or vocabulary.
+        temperature:
+          type: number
+          format: double
+          default: 0
+          description: Sampling temperature used while decoding text tokens.
+        response_format:
+          $ref: "#/components/schemas/ResponseFormat"
+        timestamp_granularities:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimestampGranularity"
+          description: Timestamp granularities to populate when response_format is verbose_json.
+        diarize:
+          type: boolean
+          default: false
+          description: Enable speaker diarization. Requires verbose_json and word timestamps.
+        min_speakers:
+          type: integer
+          minimum: 1
+          description: Minimum speakers to detect when diarization is enabled.
+        max_speakers:
+          type: integer
+          minimum: 1
+          description: Maximum speakers to detect when diarization is enabled.
+        preprocessing:
+          $ref: "#/components/schemas/PreprocessingMode"
+    AudioTranslationRequest:
+      type: object
+      required:
+        - file
+      properties:
+        file:
+          type: string
+          format: binary
+          description: >
+            Audio file to translate. Fireworks also accepts a public URL in this
+            form field, but the generated SDK models the documented file upload
+            path as a binary field.
+        model:
+          $ref: "#/components/schemas/AudioModel"
+        vad_model:
+          $ref: "#/components/schemas/VadModel"
+        alignment_model:
+          $ref: "#/components/schemas/AlignmentModel"
+        language:
+          type: string
+          nullable: true
+          description: Source language for translation.
+        prompt:
+          type: string
+          nullable: true
+          description: Prompt used to guide transcription style or vocabulary.
+        temperature:
+          type: number
+          format: double
+          default: 0
+          description: Sampling temperature used while decoding text tokens.
+        response_format:
+          $ref: "#/components/schemas/ResponseFormat"
+        timestamp_granularities:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimestampGranularity"
+          description: Timestamp granularities to populate when response_format is verbose_json.
+        preprocessing:
+          $ref: "#/components/schemas/PreprocessingMode"
+    AudioModel:
+      type: string
+      default: whisper-v3
+      enum:
+        - whisper-v3
+        - whisper-v3-turbo
+      description: ASR model name.
+    VadModel:
+      type: string
+      default: silero
+      enum:
+        - silero
+        - whisperx-pyannet
+      description: Voice activity detection model.
+    AlignmentModel:
+      type: string
+      default: mms_fa
+      enum:
+        - mms_fa
+        - tdnn_ffn
+      description: Alignment model used for timestamps.
+    ResponseFormat:
+      type: string
+      default: json
+      enum:
+        - json
+        - text
+        - srt
+        - verbose_json
+        - vtt
+      description: Response format requested from the API.
+    TimestampGranularity:
+      type: string
+      enum:
+        - word
+        - segment
+      description: Timestamp granularity for verbose JSON responses.
+    PreprocessingMode:
+      type: string
+      enum:
+        - none
+        - dynamic
+        - soft_dynamic
+        - bass_dynamic
+      description: Audio preprocessing mode.
+    AudioResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Transcribed or translated text.
+        task:
+          type: string
+          enum:
+            - transcribe
+            - translate
+          description: Task performed by the API.
+        language:
+          type: string
+          description: Language code or comma-separated detected language codes.
+        duration:
+          type: number
+          format: double
+          description: Audio duration in seconds.
+        words:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/Word"
+          description: Word-level timestamps and metadata.
+        segments:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/Segment"
+          description: Segment-level timestamps and metadata.
+      required:
+        - text
+    Word:
+      type: object
+      properties:
+        word:
+          type: string
+        language:
+          type: string
+        probability:
+          type: number
+          format: double
+        hallucination_score:
+          type: number
+          format: double
+        start:
+          type: number
+          format: double
+        end:
+          type: number
+          format: double
+        speaker_id:
+          type: string
+      required:
+        - word
+    Segment:
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+        language:
+          type: string
+        start:
+          type: number
+          format: double
+        end:
+          type: number
+          format: double
+        speaker_id:
+          type: string
+        words:
+          type: array
+          nullable: true
+          items:
+            $ref: "#/components/schemas/Word"
+      required:
+        - text
+    ErrorResponse:
+      type: object
+      additionalProperties: true
+      properties:
+        error:
+          oneOf:
+            - type: string
+            - $ref: "#/components/schemas/ErrorDetail"
+        message:
+          type: string
+    ErrorDetail:
+      type: object
+      additionalProperties: true
+      properties:
+        message:
+          type: string
+        type:
+          type: string
+        code:
+          type: string

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Nuget">
+    <Description>C# SDK for the Fireworks AI audio transcription and translation APIs.</Description>
+    <PackageTags>api;client;sdk;dotnet;fireworks;ai;speech-to-text;asr;whisper;audio;transcription;translation</PackageTags>
+  </PropertyGroup>
+
+</Project>
