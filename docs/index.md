@@ -2,7 +2,7 @@
   <h1>Fireworks</h1>
   <p class="docs-hero-lead">Modern .NET SDK for Fireworks AI audio transcription and translation generated with AutoSDK.</p>
   <div class="docs-badge-row">
-    <a href="https://www.nuget.org/packages/Fireworks/"><img alt="Nuget package" src="https://img.shields.io/nuget/vpre/Fireworks"></a>
+    <a href="https://www.nuget.org/packages/tryAGI.Fireworks/"><img alt="Nuget package" src="https://img.shields.io/nuget/vpre/tryAGI.Fireworks"></a>
     <a href="https://github.com/tryAGI/Fireworks/actions/workflows/dotnet.yml"><img alt="dotnet" src="https://github.com/tryAGI/Fireworks/actions/workflows/dotnet.yml/badge.svg?branch=main"></a>
     <a href="https://github.com/tryAGI/Fireworks/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/tryAGI/Fireworks"></a>
     <a href="https://discord.gg/Ca2xhfBf3v"><img alt="Discord" src="https://img.shields.io/discord/1115206893015662663?label=Discord&amp;logo=discord&amp;logoColor=white&amp;color=d82679"></a>

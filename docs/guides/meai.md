@@ -8,7 +8,7 @@ The Fireworks audio SDK does not currently expose a direct [Microsoft.Extensions
 ## Installation
 
 ```bash
-dotnet add package Fireworks
+dotnet add package tryAGI.Fireworks
 ```
 
 ## Usage
