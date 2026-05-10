@@ -49,5 +49,6 @@ namespace Fireworks
         public ErrorResponse()
         {
         }
+
     }
 }
