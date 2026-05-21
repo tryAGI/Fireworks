@@ -57,5 +57,6 @@ namespace Fireworks
         public ErrorDetail()
         {
         }
+
     }
 }
