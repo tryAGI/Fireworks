@@ -40,6 +40,13 @@ using Fireworks;
 using var client = new FireworksClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Fireworks.CLI --prerelease
+fireworks api --help
+```
+
 <!-- EXAMPLES:START -->
 ### Transcribe
 Create a client for Fireworks pre-recorded audio transcription.
