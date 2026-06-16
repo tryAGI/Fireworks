@@ -156,15 +156,15 @@ Translates a pre-recorded audio file from a supported source language to English
                             cancellationToken).ConfigureAwait(false);
                         var file = parseResult.GetRequiredValue(File);
                         var filename = parseResult.GetRequiredValue(Filename);
-                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : __requestBase is not null ? __requestBase.Model : default;
-                        var vadModel = CliRuntime.WasSpecified(parseResult, VadModel) ? parseResult.GetValue(VadModel) : __requestBase is not null ? __requestBase.VadModel : default;
-                        var alignmentModel = CliRuntime.WasSpecified(parseResult, AlignmentModel) ? parseResult.GetValue(AlignmentModel) : __requestBase is not null ? __requestBase.AlignmentModel : default;
-                        var language = CliRuntime.WasSpecified(parseResult, Language) ? parseResult.GetValue(Language) : __requestBase is not null ? __requestBase.Language : default;
-                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : __requestBase is not null ? __requestBase.Prompt : default;
-                        var temperature = CliRuntime.WasSpecified(parseResult, Temperature) ? parseResult.GetValue(Temperature) : __requestBase is not null ? __requestBase.Temperature : default;
-                        var responseFormat = CliRuntime.WasSpecified(parseResult, ResponseFormat) ? parseResult.GetValue(ResponseFormat) : __requestBase is not null ? __requestBase.ResponseFormat : default;
-                        var timestampGranularities = CliRuntime.WasSpecified(parseResult, TimestampGranularities) ? parseResult.GetValue(TimestampGranularities) : __requestBase is not null ? __requestBase.TimestampGranularities : default;
-                        var preprocessing = CliRuntime.WasSpecified(parseResult, Preprocessing) ? parseResult.GetValue(Preprocessing) : __requestBase is not null ? __requestBase.Preprocessing : default;
+                        var model = CliRuntime.WasSpecified(parseResult, Model) ? parseResult.GetValue(Model) : (__requestBase is { } __ModelBaseValue ? __ModelBaseValue.Model : default);
+                        var vadModel = CliRuntime.WasSpecified(parseResult, VadModel) ? parseResult.GetValue(VadModel) : (__requestBase is { } __VadModelBaseValue ? __VadModelBaseValue.VadModel : default);
+                        var alignmentModel = CliRuntime.WasSpecified(parseResult, AlignmentModel) ? parseResult.GetValue(AlignmentModel) : (__requestBase is { } __AlignmentModelBaseValue ? __AlignmentModelBaseValue.AlignmentModel : default);
+                        var language = CliRuntime.WasSpecified(parseResult, Language) ? parseResult.GetValue(Language) : (__requestBase is { } __LanguageBaseValue ? __LanguageBaseValue.Language : default);
+                        var prompt = CliRuntime.WasSpecified(parseResult, Prompt) ? parseResult.GetValue(Prompt) : (__requestBase is { } __PromptBaseValue ? __PromptBaseValue.Prompt : default);
+                        var temperature = CliRuntime.WasSpecified(parseResult, Temperature) ? parseResult.GetValue(Temperature) : (__requestBase is { } __TemperatureBaseValue ? __TemperatureBaseValue.Temperature : default);
+                        var responseFormat = CliRuntime.WasSpecified(parseResult, ResponseFormat) ? parseResult.GetValue(ResponseFormat) : (__requestBase is { } __ResponseFormatBaseValue ? __ResponseFormatBaseValue.ResponseFormat : default);
+                        var timestampGranularities = CliRuntime.WasSpecified(parseResult, TimestampGranularities) ? parseResult.GetValue(TimestampGranularities) : (__requestBase is { } __TimestampGranularitiesBaseValue ? __TimestampGranularitiesBaseValue.TimestampGranularities : default);
+                        var preprocessing = CliRuntime.WasSpecified(parseResult, Preprocessing) ? parseResult.GetValue(Preprocessing) : (__requestBase is { } __PreprocessingBaseValue ? __PreprocessingBaseValue.Preprocessing : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
