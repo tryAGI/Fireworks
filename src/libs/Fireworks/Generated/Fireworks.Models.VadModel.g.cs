@@ -10,11 +10,11 @@ namespace Fireworks
     public enum VadModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Silero,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WhisperxPyannet,
     }

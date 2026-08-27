@@ -10,23 +10,23 @@ namespace Fireworks
     public enum ResponseFormat
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Srt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Text,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VerboseJson,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Vtt,
     }

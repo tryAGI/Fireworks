@@ -20,7 +20,7 @@ namespace Fireworks.JsonConverters
                     {
                         return global::Fireworks.AudioModelExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

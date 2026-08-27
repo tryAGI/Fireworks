@@ -20,7 +20,7 @@ namespace Fireworks.JsonConverters
                     {
                         return global::Fireworks.TimestampGranularityExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -10,11 +10,11 @@ namespace Fireworks
     public enum AudioModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WhisperV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WhisperV3Turbo,
     }

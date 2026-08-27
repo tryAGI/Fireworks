@@ -4,19 +4,19 @@
 namespace Fireworks
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ErrorResponse
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("error")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Fireworks.JsonConverters.OneOfJsonConverter<string, global::Fireworks.ErrorDetail>))]
         public global::Fireworks.OneOf<string, global::Fireworks.ErrorDetail>? Error { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
