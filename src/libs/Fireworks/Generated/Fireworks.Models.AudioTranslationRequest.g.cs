@@ -4,7 +4,7 @@
 namespace Fireworks
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AudioTranslationRequest
     {

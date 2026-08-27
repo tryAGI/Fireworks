@@ -20,7 +20,7 @@ namespace Fireworks.JsonConverters
                     {
                         return global::Fireworks.AlignmentModelExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

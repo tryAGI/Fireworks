@@ -9,11 +9,11 @@ namespace Fireworks
     public enum AudioResponseTask
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Transcribe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Translate,
     }

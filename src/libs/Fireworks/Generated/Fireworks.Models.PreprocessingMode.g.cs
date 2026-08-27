@@ -9,19 +9,19 @@ namespace Fireworks
     public enum PreprocessingMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BassDynamic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Dynamic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SoftDynamic,
     }

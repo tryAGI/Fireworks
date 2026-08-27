@@ -10,11 +10,11 @@ namespace Fireworks
     public enum AlignmentModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MmsFa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TdnnFfn,
     }

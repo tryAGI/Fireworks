@@ -9,11 +9,11 @@ namespace Fireworks
     public enum TimestampGranularity
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Segment,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Word,
     }
