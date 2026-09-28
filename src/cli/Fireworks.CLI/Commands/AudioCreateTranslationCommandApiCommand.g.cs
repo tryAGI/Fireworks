@@ -113,6 +113,8 @@ internal static partial class AudioCreateTranslationCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-translation", @"Translate audio to English
@@ -190,6 +192,7 @@ Translates a pre-recorded audio file from a supported source language to English
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

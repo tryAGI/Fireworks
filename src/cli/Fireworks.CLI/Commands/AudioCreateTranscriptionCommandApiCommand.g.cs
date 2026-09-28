@@ -129,6 +129,8 @@ internal static partial class AudioCreateTranscriptionCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"create-transcription", @"Transcribe audio
@@ -215,6 +217,7 @@ Converts a pre-recorded audio file into text using Fireworks AI ASR models. Use 
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
