@@ -131,9 +131,9 @@ internal static partial class AudioCreateTranscriptionCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-transcription", @"Transcribe audio
+        var command = new Command(commandName ?? @"create-transcription", @"Transcribe audio
 Converts a pre-recorded audio file into text using Fireworks AI ASR models. Use the default base URL for `whisper-v3`; override the client base URI to `https://audio-turbo.api.fireworks.ai/v1` when using `whisper-v3-turbo`.
 ");
                         command.Options.Add(File);
