@@ -115,9 +115,9 @@ internal static partial class AudioCreateTranslationCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"create-translation", @"Translate audio to English
+        var command = new Command(commandName ?? @"create-translation", @"Translate audio to English
 Translates a pre-recorded audio file from a supported source language to English. Use the default base URL for `whisper-v3`; override the client base URI to `https://audio-turbo.api.fireworks.ai/v1` when using `whisper-v3-turbo`.
 ");
                         command.Options.Add(File);
