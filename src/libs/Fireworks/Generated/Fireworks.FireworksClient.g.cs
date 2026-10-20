@@ -35,14 +35,14 @@ namespace Fireworks
         /// <inheritdoc/>
         public global::Fireworks.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Fireworks.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext>? JsonSerializerContextProvider { get; set; }
 
         /// <summary>
         ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
-            get => JsonSerializerContextProvider.Value;
+            get => JsonSerializerContextProvider?.Value ?? global::Fireworks.SourceGenerationContext.Default;
             set => JsonSerializerContextProvider = new(() => value);
         }
 
