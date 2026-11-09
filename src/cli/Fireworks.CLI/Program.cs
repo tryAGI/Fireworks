@@ -12,5 +12,6 @@ rootCommand.Options.Add(CliOptions.Output);
 rootCommand.Options.Add(CliOptions.OutputDirectory);
 rootCommand.Subcommands.Add(AuthCommand.Create());
 rootCommand.Subcommands.Add(AudioApiGroupCommand.Create());
+rootCommand.Subcommands.Add(CliCompletion.CreateCommand(rootCommand, @"fireworks"));
 
 return await rootCommand.Parse(args).InvokeAsync().ConfigureAwait(false);
