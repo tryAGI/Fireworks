@@ -18,7 +18,7 @@ namespace Fireworks.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Fireworks.ResponseFormatExtensions.ToEnum(stringValue) ?? default;
+                        return global::Fireworks.ResponseFormatExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Fireworks.ResponseFormat.");
                     }
 
                     break;

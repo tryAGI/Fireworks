@@ -18,7 +18,7 @@ namespace Fireworks.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Fireworks.TimestampGranularityExtensions.ToEnum(stringValue) ?? default;
+                        return global::Fireworks.TimestampGranularityExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Fireworks.TimestampGranularity.");
                     }
 
                     break;
